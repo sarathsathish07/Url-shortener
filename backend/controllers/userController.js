@@ -60,7 +60,7 @@ const shortenUrl = expressAsyncHandler(async (req, res) => {
   }
 
   const shortUrlCode = Math.random().toString(36).substr(2, 5); 
-  const shortUrl = `http://localhost:5000/${shortUrlCode}`; 
+  const shortUrl = `https://url-shortener-oytx.onrender.com/${shortUrlCode}`; 
 
   const user = await User.findById(req.user._id);
 
@@ -85,12 +85,12 @@ const redirect = expressAsyncHandler(async (req, res) => {
   const { code } = req.params;
 
   const user = await User.findOne({
-    "urls.shortenedUrl": `http://localhost:5000/${code}`,
+    "urls.shortenedUrl": `https://url-shortener-oytx.onrender.com/${code}`,
   });
 
   if (user) {
     const urlData = user.urls.find(
-      (url) => url.shortenedUrl === `http://localhost:5000/${code}`
+      (url) => url.shortenedUrl === `https://url-shortener-oytx.onrender.com/${code}`
     );
     if (urlData) {
       return res.redirect(urlData.originalUrl);

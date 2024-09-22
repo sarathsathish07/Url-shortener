@@ -20,7 +20,7 @@ const HomeScreen = () => {
 
     try {
       const { shortUrlCode } = await shortenUrl({ longUrl }).unwrap();
-      setShortUrl(`http://localhost:5000/api/users/${shortUrlCode}`);
+      setShortUrl(`https://url-shortener-oytx.onrender.com/api/users/${shortUrlCode}`);
     } catch (err) {
       setError(err.data?.message || 'Something went wrong');
     }

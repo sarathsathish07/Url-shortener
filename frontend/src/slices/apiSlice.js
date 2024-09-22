@@ -1,6 +1,9 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
-const baseQuery = fetchBaseQuery({baseUrl: ''})
+const baseQuery = fetchBaseQuery({
+  baseUrl: 'https://url-shortener-oytx.onrender.com',
+  credentials: 'include', 
+});
 
 export const apiSlice = createApi({
   baseQuery,
