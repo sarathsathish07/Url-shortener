@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Button, InputGroup, FormControl, Alert, Card } from 'react-bootstrap';
 import { useShortenUrlMutation } from '../slices/usersApiSlice';
+import Loader from '../components/Loader';
 
 const HomeScreen = () => {
   const [longUrl, setLongUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [shortenUrl] = useShortenUrlMutation();
 
   const handleUrlShorten = async (e) => {
@@ -17,12 +19,15 @@ const HomeScreen = () => {
     }
 
     setError(null);
+    setLoading(true); 
 
     try {
       const { shortUrlCode } = await shortenUrl({ longUrl }).unwrap();
       setShortUrl(`https://url-shortener-oytx.onrender.com/api/users/${shortUrlCode}`);
     } catch (err) {
       setError(err.data?.message || 'Something went wrong');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,19 +36,24 @@ const HomeScreen = () => {
       <Card className="shadow border-0">
         <Card.Body>
           <h1 className="mb-4 text-center">URL Shortener</h1>
-          <Form onSubmit={handleUrlShorten}>
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="Enter long URL"
-                value={longUrl}
-                onChange={(e) => setLongUrl(e.target.value)}
-                className="border-0"
-              />
-              <Button type="submit" variant="primary">
-                Shorten URL
-              </Button>
-            </InputGroup>
-          </Form>
+
+          {loading && <Loader />}
+
+          {!loading && (
+            <Form onSubmit={handleUrlShorten}>
+              <InputGroup className="mb-3">
+                <FormControl
+                  placeholder="Enter long URL"
+                  value={longUrl}
+                  onChange={(e) => setLongUrl(e.target.value)}
+                  className="border-0"
+                />
+                <Button type="submit" variant="primary">
+                  Shorten URL
+                </Button>
+              </InputGroup>
+            </Form>
+          )}
 
           {error && <Alert variant="danger">{error}</Alert>}
 

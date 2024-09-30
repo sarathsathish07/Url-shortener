@@ -1,11 +1,10 @@
 import express from 'express';
 import { authUser,
   registerUser,
-  logoutUser,
-  shortenUrl,
-  redirect
+  logoutUser
    
 } from '../controllers/userController.js';
+import { shortenUrl,redirect } from '../controllers/urlController.js';
 import { protect } from '../middleware/authMiddleware.js';
 const router = express.Router()
 

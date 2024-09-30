@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
-// Define the schema for storing URL mappings
 const urlSchema = mongoose.Schema({
   originalUrl: {
     type: String,
@@ -17,7 +16,6 @@ const urlSchema = mongoose.Schema({
   }
 });
 
-// Define the user schema
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -35,13 +33,11 @@ const userSchema = mongoose.Schema({
   profileImageName: {
     type: String
   },
-  // Add an array to store the URL mappings for each user
-  urls: [urlSchema]  // Embed the URL schema within the user schema
+  urls: [urlSchema]  
 }, {
   timestamps: true
 });
 
-// Middleware to hash the password before saving
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next();
@@ -50,7 +46,6 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-// Method to match user password
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
