@@ -23,11 +23,12 @@ const HomeScreen = () => {
   
     try {
       const response = await shortenUrl({ longUrl }).unwrap();
-      console.log('API Response:', response); 
-      const { shortenedUrl } = response;
+      console.log('API Response:', response);
+      
+      const { shortenedUrl } = response.data;
       
       if (shortenedUrl) {
-        setShortUrl(shortenedUrl); 
+        setShortUrl(shortenedUrl);
       } else {
         setError('No shortened URL returned.');
       }
