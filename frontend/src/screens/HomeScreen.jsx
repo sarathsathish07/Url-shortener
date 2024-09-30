@@ -12,19 +12,28 @@ const HomeScreen = () => {
 
   const handleUrlShorten = async (e) => {
     e.preventDefault();
-
+  
     if (!longUrl.trim()) {
       setError('Please enter a valid URL.');
       return;
     }
-
+  
     setError(null);
-    setLoading(true); 
-
+    setLoading(true);
+  
     try {
-      const { shortUrlCode } = await shortenUrl({ longUrl }).unwrap();
-      setShortUrl(`https://url-shortener-oytx.onrender.com/api/users/${shortUrlCode}`);
+      const response = await shortenUrl({ longUrl }).unwrap();
+      console.log('API Response:', response); 
+      const { shortenedUrl } = response;
+      
+      if (shortenedUrl) {
+        setShortUrl(shortenedUrl); 
+      } else {
+        setError('No shortened URL returned.');
+      }
+      
     } catch (err) {
+      console.error('Error:', err); 
       setError(err.data?.message || 'Something went wrong');
     } finally {
       setLoading(false);
@@ -37,7 +46,7 @@ const HomeScreen = () => {
         <Card.Body>
           <h1 className="mb-4 text-center">URL Shortener</h1>
 
-          {loading && <Loader />}
+          {loading && <Loader />} 
 
           {!loading && (
             <Form onSubmit={handleUrlShorten}>
