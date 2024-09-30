@@ -10,11 +10,16 @@ const urlSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  shortUrlCode: {  
+    type: String,
+    required: true
+  },
   dateCreated: {
     type: Date,
     default: Date.now
   }
 });
+
 
 const userSchema = mongoose.Schema({
   name: {
