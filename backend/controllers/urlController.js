@@ -38,8 +38,7 @@ const shortenUrl = expressAsyncHandler(async (req, res) => {
   const shortUrl = `https://url-shortener-oytx.onrender.com/${shortUrlCode}`;
 
   const user = await User.findById(req.user._id);
-  console.log("Shortened URL:", shortUrl);  // Log shortened URL for debugging
-  console.log("Short URL Code:", shortUrlCode);  // Log shortUrlCode for debugging
+
   
  
   

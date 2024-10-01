@@ -10,11 +10,21 @@ const HomeScreen = () => {
   const [loading, setLoading] = useState(false);
   const [shortenUrl] = useShortenUrlMutation();
 
+  const isValidUrl = (url) => {
+    const urlRegex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:[0-9]{1,5})?(\/.*)?$/;
+    return urlRegex.test(url);
+  };
+
   const handleUrlShorten = async (e) => {
     e.preventDefault();
   
     if (!longUrl.trim()) {
       setError('Please enter a valid URL.');
+      return;
+    }
+
+    if (!isValidUrl(longUrl)) {
+      setError('Please enter a valid URL format.');
       return;
     }
   
