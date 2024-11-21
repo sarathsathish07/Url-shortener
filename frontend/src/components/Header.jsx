@@ -25,7 +25,7 @@ const Header = () => {
   }
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar className='header'  variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
           <Navbar.Brand>URL SHORETENER</Navbar.Brand>

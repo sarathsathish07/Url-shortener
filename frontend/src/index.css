@@ -1,5 +1,5 @@
 .containerMain {
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: auto;
   padding: 20px;
 }
@@ -9,7 +9,7 @@
 }
 
 .card-body {
-  padding: 30px;
+  padding: 70px;
 }
 
 input:focus {
@@ -18,58 +18,143 @@ input:focus {
 }
 
 /* LoginScreen.css */
+
+/* Background styling */
+.body-background {
+  background: linear-gradient(135deg, rgb(4, 89, 158), rgb(212, 232, 241)); /* Purple to Blue Gradient */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form container */
 .form-container {
-  background-color: #f9f9f9;
+  background-color: #ffffff; /* White background for contrast */
   padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   max-width: 400px;
+  width: 90%;
   margin: auto;
+ 
 }
 
 .form-container h1 {
-  color: #333;
-  font-size: 2rem;
+  color: #6a11cb; /* Matches the gradient */
+  font-size: 2.2rem;
   margin-bottom: 20px;
+  font-weight: bold;
   text-align: center;
 }
 
 .form-container .form-group label {
-  color: #555;
+  color: #333;
   font-weight: bold;
 }
 
 .form-container .form-control {
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .form-container .form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  border-color: #2575fc;
+  box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
 }
 
+/* Button styling */
 .form-container .btn-primary {
   width: 100%;
-  background-color: #007bff;
+  background-color: #2575fc;
   border: none;
   font-size: 1rem;
-  padding: 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .form-container .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #6a11cb;
+  transform: translateY(-2px); /* Adds a subtle lift effect */
 }
 
+/* Link styling */
 .form-container .py-3 a {
-  color: #007bff;
+  color: #2575fc;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .form-container .py-3 a:hover {
-  color: #0056b3;
+  color: #6a11cb;
+}
+
+/* Responsive design */
+@media (max-width: 576px) {
+  .form-container {
+    padding: 30px;
+  }
+
+  .form-container h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Main container styling */
+.containerMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 94vh;
+  background: linear-gradient(135deg, rgb(4, 89, 158), rgb(212, 232, 241)); 
+  padding: 20px;
+}
+
+/* Card styling */
+.containerMain .card {
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* Card title */
+.containerMain .card h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Input group */
+.containerMain .form-control {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.containerMain .btn-primary {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: #6a11cb;
+  border: none;
+}
+
+.containerMain .btn-primary:hover {
+  background: #2575fc;
+}
+
+/* Success alert link */
+.containerMain .alert-success a {
+  color: #2575fc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.containerMain .alert-success a:hover {
+  text-decoration: underline;
+}
+.header{
+  background-color: #011c75;
 }
