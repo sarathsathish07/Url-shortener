@@ -16,3 +16,60 @@ input:focus {
   box-shadow: none;
   border-color: #007bff;
 }
+
+/* LoginScreen.css */
+.form-container {
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+}
+
+.form-container h1 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-container .form-group label {
+  color: #555;
+  font-weight: bold;
+}
+
+.form-container .form-control {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.form-container .btn-primary {
+  width: 100%;
+  background-color: #007bff;
+  border: none;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.form-container .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.form-container .py-3 a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.form-container .py-3 a:hover {
+  color: #0056b3;
+}
